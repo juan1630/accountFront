@@ -1,11 +1,20 @@
+
+body{
+    background-color: #FFFAFA;
+}
+
 .main-login {
-    max-width: 80%;
-    width: 100%;
-    margin: 0 auto;
+    max-width: 1000px;
+    width: 90%;
+    margin: 20px auto;
+    height:  700px;
 }
 
 .header-login {
     margin-top: 150px;
+    max-width: 1250px;
+    width: 90% ;
+    padding: 20px;
 }
 .title-login {
     text-align: left;
@@ -27,18 +36,24 @@
     margin: 0 auto;
 }
 .input-login{
-    width: 100%;
-    margin: 10px;
-    padding: 10px;
+    width: 95%;
+    margin: 10px auto ; 
+    padding: 15px;
     border: none;
+    box-shadow: 13px 13px 30px -8px rgba(0,0,0,0.63);
+    -webkit-box-shadow: 13px 13px 30px -8px rgba(0,0,0,0.63);
+        -moz-box-shadow: 13px 13px 30px -8px rgba(0,0,0,0.63);
 }
 
 .buton-login {
     width: 40%;
     border-radius: 40px;
     border: none;
-    height: 30px;
+    padding: 20px;
+    color: white;
     margin-top: 30px;
+    background: rgb(2,0,36);
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(150,221,116,1) 0%, rgba(176,232,162,1) 88%);
 }
 
 .button-container-login {
@@ -46,8 +61,57 @@
     justify-content: flex-end;
 }
 
+.input-card-login{
+    margin-top: 15px;
+}
 .footer-login {
-    margin-top: 400px;
+    margin-top: 250px;
     display: flex;
     justify-content: center;
+}
+
+.p-login-footer{
+    color: #74de42;
+}
+.container-edad, .container-edad {
+    width: 45%;
+}
+
+.form-register {
+    margin-top: 20px;
+}
+
+.section-register{
+    max-width: 1000px;
+    width:  100% ;
+    margin: 0 auto;
+    padding: 5px;
+}
+
+.footer-register {
+    display: flex;
+    justify-content: center;
+    margin-top: 200px;
+}
+
+.container-number-register {
+    display: flex;
+    justify-content: space-between;
+}
+
+.input-register-edad, .input-register-genero {
+    padding:  7px;
+    width: 100%;
+}
+
+.container-genero {
+    width: 50%;
+}
+
+.icon-back-button {
+    font-size: 28px;
+    cursor: pointer;
+}
+input{
+    margin-top:  15px;
 }
