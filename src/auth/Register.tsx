@@ -4,23 +4,27 @@ import { Link  } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { TextField } from '@mui/material';
 import { useFormik } from 'formik'
+import { ApiRequest } from '../api/apiConect';
 
 const initialValuesFormik = {
-    nombre:"",
+    name:"",
     email:"",
     password:'',
-    edad: 0,
-    genero : ""
+    age: 0,
+    genero : "",
+    prosession:"",
+    theme: "light"
 }
-export const RegisterPage =() => {
+export const RegisterPage =  () => {
 
     const navigateRoute = useNavigate();
     const formik = useFormik({
         initialValues:initialValuesFormik,
-        onSubmit:(values)=> {
-            console.log(values);
+        onSubmit: async (values)=> {
+            const requestResponse = await ApiRequest( 'auth/create/user' , 'POST' , values );
+            console.log( requestResponse );
         },
-
+        
     })
 
     const onClickBack = () => navigateRoute('/auth/login');
@@ -35,10 +39,10 @@ export const RegisterPage =() => {
             <section className="section-register" >
                 <form className="form-register" onSubmit={ formik.handleSubmit } > 
                     
-                    <TextField  onChange={ formik.handleChange } value={ formik.values.nombre }   type='text'  className='form-register-input' placeholder='Ingresa tu nombre' name='nombre' label='nombre' fullWidth /> 
+                    <TextField  onChange={ formik.handleChange } value={ formik.values.name }   type='text'  className='form-register-input' placeholder='Ingresa tu nombre' name='name' label='nombre' fullWidth /> 
                     <TextField  onChange={ formik.handleChange } value={ formik.values.email }  type='email'  className='form-register-input' placeholder='Ingresa tu email' name='email' fullWidth />
                     <TextField  onChange={ formik.handleChange } value={ formik.values.password }  type='text'  className='form-register-input' placeholder='Ingresa tu contrana' name='password' fullWidth />
-                    <TextField  onChange={ formik.handleChange } value={ formik.values.edad }  type='number'  className='form-register-input' placeholder='Edad' name='edad' />
+                    <TextField  onChange={ formik.handleChange } value={ formik.values.age }  type='number'  className='form-register-input' placeholder='Edad' name='age' />
                     <TextField  onChange={ formik.handleChange } value={ formik.values.genero }  type='text'  className='form-register-input' placeholder='Genero' name='genero'  /> 
                     <div className="button-container-login">
                     <button type='submit' className="buton-login" > Enviar  </button>
