@@ -42,11 +42,13 @@ export const RegisterPage =  () => {
                     <TextField  onChange={ formik.handleChange } value={ formik.values.name }   type='text'  className='form-register-input' placeholder='Ingresa tu nombre' name='name' label='nombre' fullWidth /> 
                     <TextField  onChange={ formik.handleChange } value={ formik.values.email }  type='email'  className='form-register-input' placeholder='Ingresa tu email' name='email' fullWidth />
                     <TextField  onChange={ formik.handleChange } value={ formik.values.password }  type='text'  className='form-register-input' placeholder='Ingresa tu contrana' name='password' fullWidth />
-                    <TextField  onChange={ formik.handleChange } value={ formik.values.age }  type='number'  className='form-register-input' placeholder='Edad' name='age' />
-                    <TextField  onChange={ formik.handleChange } value={ formik.values.genero }  type='text'  className='form-register-input' placeholder='Genero' name='genero'  /> 
+                        <div className="container-register-inputs">
+                        <TextField  onChange={ formik.handleChange } value={ formik.values.age }  type='number'  className='form-register-input form-register-input-age' placeholder='Edad' name='age' />
+                    <TextField  onChange={ formik.handleChange } value={ formik.values.genero }  type='text'  className='form-register-input form-register-input-age' placeholder='Genero' name='genero'  /> 
+                        </div>
                     <div className="button-container-login">
-                    <button type='submit' className="buton-login" > Enviar  </button>
-                </div>
+                        <button type='submit' className="buton-login" > Enviar  </button>
+                    </div>
                 </form>
             </section>
             <footer className="footer-register" >    

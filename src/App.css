@@ -81,7 +81,16 @@ body{
 .form-register {
     margin-top: 20px;
 }
-
+.form-register-input{
+    margin-top: 25px !important;
+}
+.form-register-input-age{
+    width: 45% ;
+}
+.container-register-inputs{
+    display: flex;
+    justify-content: space-between;
+}
 .section-register{
     max-width: 1000px;
     width:  100% ;
@@ -92,7 +101,7 @@ body{
 .footer-register {
     display: flex;
     justify-content: center;
-    margin-top: 200px;
+    margin-top: 50px;
 }
 
 .container-number-register {
