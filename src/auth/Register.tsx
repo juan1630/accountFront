@@ -4,9 +4,12 @@ import { Link  } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { TextField } from '@mui/material';
 import { useFormik } from 'formik'
-import { ApiRequest } from '../api/apiConect';
+import  { useDispatch } from 'react-redux'
+import { registerProps } from '../hooks/useRegiter';
+import { onLoadingRegister, onRegister, onError } from '../store/authReducer/authSlice';
+import ApiRequest from '../api/apiConect';
 
-const initialValuesFormik = {
+const initialValuesFormik: registerProps = {
     name:"",
     email:"",
     password:'',
@@ -16,16 +19,28 @@ const initialValuesFormik = {
     theme: "light"
 }
 export const RegisterPage =  () => {
-
+    
     const navigateRoute = useNavigate();
+    const dispatch = useDispatch();
+
     const formik = useFormik({
         initialValues:initialValuesFormik,
-        onSubmit: async (values)=> {
-            const requestResponse = await ApiRequest( 'auth/create/user' , 'POST' , values );
-            console.log( requestResponse );
+        onSubmit:  (values: registerProps )=> {
+            dispatch( onLoadingRegister());
+            ApiRequest.post('/auth/create/user', values)
+            .then( (data: any) => {
+                console.log( data)
+                if( data.status === 201 ){
+                    dispatch( onRegister( data.data.resp ));
+                }
+            })
+            .catch(error => {
+                dispatch( onError());
+                console.log(error);
+            })
         },
         
-    })
+    });
 
     const onClickBack = () => navigateRoute('/auth/login');
     return(

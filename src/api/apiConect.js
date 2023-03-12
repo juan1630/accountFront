@@ -1,40 +1,8 @@
-import { useState } from 'react';
+import axios from 'axios';
 
-export const ApiRequest = (url = '', method = 'GET' , payload = { } ) => {
 
-    const initialState  = {
-        ok: false,
-        payload: {},
-        error:null
-    }
+  const ApiRequest =  axios.create({
+        baseURL:"http://localhost:3001"
+    });
 
-  const [ requestState, setRequestState ]  = useState(initialState);
-
-    const URL = `http://localhost:3001/${url}`;
-    fetch( URL ,  {
-        method,
-        headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify( payload )
-    } )
-    .then( data  => {
-        if(data.ok) return data.json();
-    })
-    .then( response => {
-        console.log( response );
-        setRequestState(({
-            ok: response.ok,
-            payload: response.data
-        })); 
-        return response;
-    })
-    .catch(error => {
-        console.log(error);
-        setRequestState({
-            error
-        });
-    })
-
-    return requestState;
-}
+export default ApiRequest;

@@ -1,8 +1,12 @@
 import {  Routes, Route, Navigate  } from 'react-router-dom';
 import { LoginPage } from './auth/login';
 import { RegisterPage } from './auth/Register';
+import {  useSelector} from 'react-redux'
 
 export const AppRoutes = () => {
+    const { authenticated } = useSelector( (state:any) => state.auth );
+    console.log( authenticated )
+
     return(<Routes>
         <>
             <Route path='/auth/login' element={ <LoginPage/> } />
