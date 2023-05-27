@@ -9,3 +9,15 @@ export interface registerProps {
     prosession: string;
     theme : string
 }
+
+
+export interface registerAmount {
+    total: number;
+    description: string;
+    fechaDeOperacion:  number;
+    kindOfMove: number;
+}
+/*
+export interface createOperation {
+
+}*/

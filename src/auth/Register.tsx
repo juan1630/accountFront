@@ -29,7 +29,6 @@ export const RegisterPage =  () => {
             dispatch( onLoadingRegister());
             ApiRequest.post('/auth/create/user', values)
             .then( (data: any) => {
-                console.log( data)
                 if( data.status === 201 ){
                     dispatch( onRegister( data.data.resp ));
                 }

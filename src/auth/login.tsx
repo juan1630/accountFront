@@ -3,7 +3,13 @@ import TextField from '@mui/material/TextField';
 import { useFormik } from 'formik';
 import { Link } from 'react-router-dom'
 import * as yup from 'yup'
+import ApiRequest from '../api/apiConect';
+import  { useDispatch } from 'react-redux';
+import  { onRegister } from '../store/authReducer/authSlice'
+
 export const LoginPage = () => {
+
+    const dispatch = useDispatch();
 
     const initialValuesFormik = {
         email: '',
@@ -20,11 +26,24 @@ export const LoginPage = () => {
                     .required('La contrasena es requerida')
                     .min(6, 'Debe de ser mas de 6 caracteres')
     });
+
     const formik = useFormik({
         initialValues: initialValuesFormik,
         validationSchema: validationSchemaYup,
-        onSubmit: (values) => {
-            console.log( values );
+        onSubmit: async(values) => {
+
+            try {
+               const resp = await ApiRequest.post('/auth', values)
+                if( resp.status === 200 ){
+                    sessionStorage.setItem('token' , resp.data.token);
+                    dispatch( onRegister(resp.data));
+                }
+
+            }catch(error) {
+
+                console.log(error)
+            }
+
         }
     })
     return (

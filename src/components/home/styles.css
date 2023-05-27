@@ -1,0 +1,54 @@
+.form-register-amount {
+    margin-bottom: 20px;   
+}
+.form-amount{
+    width: 100%;
+}
+.input-login {
+    border-radius: 7px;
+    margin-bottom: 20px;
+    width: 100%;
+}
+.btn-submit-amount {
+    background: rgb(2,0,36);
+    color: white;
+    width: 90%;
+    padding: 10px;
+    border: 0;
+    border-radius: 10px;
+    position: fixed;
+    margin-top: calc( 60vh - 50% );
+}
+
+.form-group {
+    width: 90%;
+    margin-bottom: 50px;
+}
+
+.margin-top-section{
+    margin-top: 50px;
+}
+
+.date-picker-amount{
+    width: 100%;
+}
+
+.select-item { 
+    width: 100%;
+}
+@media screen and (min-width: 600px) {
+    .form-amount {
+        width: 100%;
+        margin: 0;
+    }
+    .form-group{
+        width: 90%;
+        margin-left: 5%;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .form-group{
+        width: 90%;
+    }
+}
