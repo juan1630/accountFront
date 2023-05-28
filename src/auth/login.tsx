@@ -31,7 +31,7 @@ export const LoginPage = () => {
         initialValues: initialValuesFormik,
         validationSchema: validationSchemaYup,
         onSubmit: async(values) => {
-
+            console.log( values );
             try {
                const resp = await ApiRequest.post('/auth', values)
                 if( resp.status === 200 ){
