@@ -12,3 +12,19 @@ export interface dataResponse {
     theme: string
   }
   
+
+  export interface ErrorLoginResponse  {
+    reponse: dataError
+    status: number
+
+   }
+
+
+   interface dataError {
+    data:dataError
+   }
+
+   interface dataErrorLogin {
+    ok: boolean
+    message: string
+   }

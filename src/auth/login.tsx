@@ -6,6 +6,7 @@ import * as yup from 'yup'
 import ApiRequest from '../api/apiConect';
 import  { useDispatch } from 'react-redux';
 import  { onRegister } from '../store/authReducer/authSlice'
+import  Swal from 'sweetalert2';
 
 export const LoginPage = () => {
 
@@ -23,14 +24,14 @@ export const LoginPage = () => {
                 .required('El email es requerido'),
         password: yup
                     .string()
-                    .required('La contrasena es requerida')
+                    .required('La contraseña es requerida')
                     .min(6, 'Debe de ser mas de 6 caracteres')
     });
 
     const formik = useFormik({
         initialValues: initialValuesFormik,
         validationSchema: validationSchemaYup,
-        onSubmit: async(values) => {
+        onSubmit: async(values, { resetForm }) => {
             
             try {
                const resp = await ApiRequest.post('/auth', values)
@@ -39,9 +40,10 @@ export const LoginPage = () => {
                     dispatch( onRegister(resp.data));
                 }
 
-            }catch(error) {
-
-                console.log(error)
+            }catch(error:any  ) {
+                console.log( error );
+                Swal.fire( error.response.data.message, '', 'error' );
+                resetForm()
             }
 
         }
